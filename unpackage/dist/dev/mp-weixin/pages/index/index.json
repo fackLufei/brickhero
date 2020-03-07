@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-button": "/wxcomponents/vant-weapp/button/index",
+    "van-search": "/wxcomponents/vant-weapp/search/index",
+    "van-image": "/wxcomponents/vant-weapp/image/index",
+    "van-sticky": "/wxcomponents/vant-weapp/sticky/index"
+  }
+}

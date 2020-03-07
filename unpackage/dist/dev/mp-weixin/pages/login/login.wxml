@@ -1,0 +1,1 @@
+<view class="login">{{'我是登录页'+userName+''}}</view>
