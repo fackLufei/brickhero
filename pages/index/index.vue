@@ -26,8 +26,8 @@
 		</view>
 		<!-- 分类 -->
 		<view class="class-ification">
-			<view class="cate-section" v-for="(item,index) in brandList" :key="index">
-				<view class="cate-item" v-for="_item in item" :key="_item.id" @tap="test">
+			<view class="cate-section" >
+				<view class="cate-item" v-for="_item in classifyList" :key="_item.id" @tap="classify(_item)">
 					<image :src="_item.icon"></image>
 					<text>{{_item.name}}</text>
 				</view>
@@ -39,50 +39,45 @@
 
 <script>
 	import {
-		getHomeContent,productCateList
+		getHomeContent,
+		productCateList
 	} from '@/api/homeApi.js'
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
 	export default {
 		data() {
 			return {
 				swiperCurrent: 0,
-				carouselList: [],
-				brandList: []
+				carouselList: []
 			}
+		},
+		computed: {
+			...mapState(['classifyList'])
 		},
 		onReady() {
 			//获取轮播数据
 			getHomeContent().then(res => {
 				if (res.code == 200) {
-					
 					this.carouselList = res.data.advertiseList;
-					
-				}
-			})
-			
-			productCateList(0).then(res=>{
-				if (res.code == 200) {
-					let result = res.data;
-					let _arr = [];
-					for(var i=0;i<result.length;i+=3){
-					    _arr.push(result.slice(i,i+3));
-					}
-					this.brandList = _arr;
 				}
 			})
 		},
 		methods: {
+			...mapMutations(['setClassifyList']),
 			//轮播图切换修改自定义指示器
 			swiperChange(e) {
 				const index = e.detail.current;
 				this.swiperCurrent = index;
 			},
-			test(){
-				this.$router.navigateTo({url:'../login/login'});
+			classify(item) {
+				// this.$router.navigateTo({
+				// 	url: `../classify/classify?id=${item.id}`
+				// });
 			}
 		}
 	}
-
-
 </script>
 
 <style lang="scss">
@@ -129,7 +124,8 @@
 
 		.cate-section {
 			display: flex;
-			margin-bottom: 54upx;
+			flex-wrap:wrap;
+			// margin-bottom: 54upx;
 
 			.cate-item {
 				display: flex;
@@ -137,7 +133,8 @@
 				align-items: center;
 				color: #303133;
 				font-size: 26upx;
-				flex:1;
+				width: 33.33%;
+				margin-bottom: 54upx;
 			}
 
 			image {
