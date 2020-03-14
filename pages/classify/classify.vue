@@ -56,8 +56,10 @@
 				this.currentId = item.id;
 				this.getItemData(this.currentId);
 			},
-			rightItemClick(titem){
-				console.log(titem);
+			rightItemClick(item){
+				this.$router.navigateTo({
+					url: `../product/product?id=${this.currentId}&tabId=${item.id}`
+				});
 			},
 			getItemData(id) {
 				productCateList(id).then(res => {

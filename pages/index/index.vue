@@ -72,9 +72,9 @@
 				this.swiperCurrent = index;
 			},
 			classify(item) {
-				// this.$router.navigateTo({
-				// 	url: `../classify/classify?id=${item.id}`
-				// });
+				this.$router.navigateTo({
+					url: `../product/product?id=${item.id}`
+				});
 			}
 		}
 	}
