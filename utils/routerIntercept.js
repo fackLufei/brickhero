@@ -6,6 +6,7 @@ export default  {
 	navigateTo(config){
 		
 		routeDetection(config).then(e=>{
+			console.log(config)
 			console.log(uni.navigateTo);
 			uni.navigateTo(config);
 		})
