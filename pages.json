@@ -60,10 +60,7 @@
 				}
 			}
 		},
-		{
-			"path": "pages/login/login",
-			"style": {}
-		}, {
+		 {
 			"path": "pages/classify/classify",
 			"style": {
 				"usingComponents": {
