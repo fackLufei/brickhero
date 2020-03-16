@@ -21,19 +21,19 @@
 		{
 			"path": "pages/user/user",
 			"style": {
+				"navigationBarTitleText": "个人中心",
 				"usingComponents": {
 					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
 					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
 				}
 			}
-		}
-	    ,{
-            "path" : "pages/login/login",
-            "style" : {}
+		}, {
+			"path": "pages/login/login",
+			"style": {}
 		},
 		{
-            "path" : "pages/user/order/index",
-            "style" : {
+			"path": "pages/user/order/index",
+			"style": {
 				"usingComponents": {
 					"van-button": "/wxcomponents/vant-weapp/button/index",
 					"van-search": "/wxcomponents/vant-weapp/search/index",
@@ -43,8 +43,8 @@
 			}
 		},
 		{
-            "path" : "pages/user/record/index",
-            "style" : {
+			"path": "pages/user/record/index",
+			"style": {
 				"usingComponents": {
 					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
 					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
@@ -52,18 +52,15 @@
 			}
 		},
 		{
-            "path" : "pages/user/collection/index",
-            "style" : {
+			"path": "pages/user/collection/index",
+			"style": {
 				"usingComponents": {
 					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
 					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
 				}
 			}
-        }
-    ],
-				"navigationBarTitleText": "个人中心"
-			}
-		}, {
+		},
+		{
 			"path": "pages/login/login",
 			"style": {}
 		}, {
