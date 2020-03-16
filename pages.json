@@ -7,15 +7,15 @@
 				"usingComponents": {
 					"van-button": "/wxcomponents/vant-weapp/button/index",
 					"van-search": "/wxcomponents/vant-weapp/search/index",
-					 "van-image": "/wxcomponents/vant-weapp/image/index",
-					 "van-sticky": "/wxcomponents/vant-weapp/sticky/index"
+					"van-image": "/wxcomponents/vant-weapp/image/index",
+					"van-sticky": "/wxcomponents/vant-weapp/sticky/index"
 				}
 			}
 		},
 		{
 			"path": "pages/cart/cart",
 			"style": {
-
+				"navigationBarTitleText": "购物车"
 			}
 		},
 		{
@@ -61,6 +61,32 @@
 			}
         }
     ],
+				"navigationBarTitleText": "个人中心"
+			}
+		}, {
+			"path": "pages/login/login",
+			"style": {}
+		}, {
+			"path": "pages/classify/classify",
+			"style": {
+				"usingComponents": {
+					"van-search": "/wxcomponents/vant-weapp/search/index",
+					"van-image": "/wxcomponents/vant-weapp/image/index",
+					"van-sticky": "/wxcomponents/vant-weapp/sticky/index"
+				}
+			}
+		}, {
+			"path": "pages/product/product",
+			"style": {
+				"navigationBarTitleText": "商品列表",
+				"usingComponents": {
+					"van-image": "/wxcomponents/vant-weapp/image/index",
+					"van-tab": "/wxcomponents/vant-weapp/tab/index",
+					"van-tabs": "/wxcomponents/vant-weapp/tabs/index"
+				}
+			}
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "搬砖侠",
@@ -75,8 +101,14 @@
 		"list": [{
 				"pagePath": "pages/index/index",
 				"iconPath": "static/images/shopping_mall.png",
-				"selectedIconPath": "static/images/shopping_mall-select.png",
+				"selectedIconPath": "static/images/shopping_mall_select.png",
 				"text": "首页"
+			},
+			{
+				"pagePath": "pages/classify/classify",
+				"iconPath": "static/images/classify.png",
+				"selectedIconPath": "static/images/classify_select.png",
+				"text": "分类"
 			},
 			{
 				"pagePath": "pages/cart/cart",
@@ -87,7 +119,7 @@
 			{
 				"pagePath": "pages/user/user",
 				"iconPath": "static/images/my.png",
-				"selectedIconPath": "static/images/my-select.png",
+				"selectedIconPath": "static/images/my_select.png",
 				"text": "我的"
 			}
 		]

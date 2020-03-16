@@ -7,8 +7,7 @@ export default  new Vuex.Store({
     state: {  
         login: false,  
         token: '',  
-        avatarUrl: '',  
-        userName: 'xiaohei'  
+        classifyList:[]//首页分类数据
     },  
     mutations: {  
         login(state, provider) {  
@@ -16,14 +15,14 @@ export default  new Vuex.Store({
             console.log(provider)  
             state.login = true;  
             state.token = provider.token;  
-            state.userName = provider.userName;  
-            state.avatarUrl = provider.avatarUrl;  
+   
         },  
         logout(state) {  
             state.login = false;  
             state.token = '';  
-            state.userName = '';  
-            state.avatarUrl = '';  
-        }  
+        },
+		setClassifyList(state, data){
+			state.classifyList = data;
+		}
     }  
 })  

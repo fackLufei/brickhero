@@ -17,3 +17,11 @@ export function productCateList(parentId){
 	});
 	
 }
+
+//获取商品列表
+export function getProduct(data,pageSize,pageNum){
+	return http.post({
+		url:`/home/product/list?pageSize=${pageSize}&pageNum=${pageNum}`,
+		data
+	});
+}
