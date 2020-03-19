@@ -7,6 +7,7 @@ export default  {
 	navigateTo(config){
 		
 		routeDetection(config).then(e=>{
+			
 			uni.navigateTo(config);
 		})
 		

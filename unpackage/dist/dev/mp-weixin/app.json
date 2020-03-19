@@ -3,14 +3,17 @@
     "pages/index/index",
     "pages/cart/cart",
     "pages/user/user",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/user/order/index",
+    "pages/user/record/index",
+    "pages/user/collection/index"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "搬砖侠",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#FFFFFF"
   },
   "tabBar": {
     "color": "#C0C4CC",
@@ -38,5 +41,7 @@
       }
     ]
   },
-  "usingComponents": {}
+  "permission": {},
+  "usingComponents": {},
+  "sitemapLocation": "sitemap43.json"
 }

@@ -73,7 +73,7 @@
 			},
 			classify(item) {
 				this.$router.navigateTo({
-					url: `../product/product?id=${item.id}`
+					url: `/pages/product/product?id=${item.id}`
 				});
 			}
 		}

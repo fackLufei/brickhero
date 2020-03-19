@@ -9,7 +9,7 @@
 					<view class="product-item" v-for="item in goodsData" :key="item.id">
 						<!-- 商品图片 -->
 						<view class="product-pic">
-							<van-image fit="contain" width="100%" height="100%" :src="item.pic" />
+							<van-image fit="contain" width="100%" height="100%" src="/static/images/test_product.jpg" />
 						</view>
 						<!-- 商品名称 -->
 						<view class="product-name">
@@ -25,7 +25,7 @@
 							<text class="product-price">&#65509; {{item.price}}</text>
 							<text class="product-sale">已销售{{item.sale}}{{item.unit}}</text>
 						</view>
-						<van-icon class="shopping-cart" name="shopping-cart-o" />
+						<van-icon class="shopping-cart" name="shopping-cart-o" @tap="shopCart" />
 					</view>
 				</view>
 			</van-tab>
@@ -126,8 +126,12 @@
 			tabChange(e) {//类别选择
 				this.tabActive = e.detail.name;
 				this.getGoodsData(this.tabActive);
+			},
+			shopCart(){
+				this.$router.switchTab({
+					url: `../cart/cart`
+				});
 			}
-
 		}
 	}
 </script>

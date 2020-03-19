@@ -21,12 +21,46 @@
 		{
 			"path": "pages/user/user",
 			"style": {
-				"navigationBarTitleText": "个人中心"
+				"navigationBarTitleText": "个人中心",
+				"usingComponents": {
+					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
+					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
+				}
 			}
 		}, {
 			"path": "pages/login/login",
 			"style": {}
-		}, {
+		},
+		{
+			"path": "pages/user/order/index",
+			"style": {
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-search": "/wxcomponents/vant-weapp/search/index",
+					"van-image": "/wxcomponents/vant-weapp/image/index",
+					"van-sticky": "/wxcomponents/vant-weapp/sticky/index"
+				}
+			}
+		},
+		{
+			"path": "pages/user/record/index",
+			"style": {
+				"usingComponents": {
+					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
+					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
+				}
+			}
+		},
+		{
+			"path": "pages/user/collection/index",
+			"style": {
+				"usingComponents": {
+					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
+					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
+				}
+			}
+		},
+		 {
 			"path": "pages/classify/classify",
 			"style": {
 				"usingComponents": {
@@ -51,7 +85,7 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "搬砖侠",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#FFFFFF"
 	},
 	"tabBar": {
 		"color": "#C0C4CC",

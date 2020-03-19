@@ -35,7 +35,17 @@
 	} from 'vuex';
 	export default {
 		onLoad() {
+			if(this.classifyList.length>0){
 				this.initData(this.classifyList[0].id);
+			}else{
+				//获取首页分类
+				productCateList(0).then(res => {
+					if (res.code == 200) {
+						this.setClassifyList(res.data);
+						this.initData(res.data[0].id);
+					}
+				})
+			}
 		},
 		computed: {
 			...mapState(['classifyList'])
