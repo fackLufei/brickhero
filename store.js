@@ -1,25 +1,20 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import {getToken,getUserInfo} from '@/utils/auth.js';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default  new Vuex.Store({  
     state: {  
-        login: false,  
-        token: '',  
+        userInfo:getUserInfo(), 
+        token: getToken()||'',  
         classifyList:[]//首页分类数据
     },  
-    mutations: {  
-        login(state, provider) {  
-            console.log(state)  
-            console.log(provider)  
-            state.login = true;  
-            state.token = provider.token;  
-   
-        },  
-        logout(state) {  
-            state.login = false;  
-            state.token = '';  
+    mutations: {    
+        logout(state) { 
+			 state.userInfo = {};
+			 state.token = '';
+             uni.clearStorageSync();
         },
 		setClassifyList(state, data){
 			state.classifyList = data;
