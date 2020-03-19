@@ -29,7 +29,12 @@
 			}
 		}, {
 			"path": "pages/login/login",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "登录/注册",
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index"
+				}
+			}
 		},
 		{
 			"path": "pages/user/order/index",
@@ -60,26 +65,51 @@
 				}
 			}
 		},
-		 {
+		{
 			"path": "pages/classify/classify",
 			"style": {
+				"navigationBarTitleText": "分类",
 				"usingComponents": {
 					"van-search": "/wxcomponents/vant-weapp/search/index",
 					"van-image": "/wxcomponents/vant-weapp/image/index",
 					"van-sticky": "/wxcomponents/vant-weapp/sticky/index"
 				}
 			}
-		}, {
+		},
+		{
 			"path": "pages/product/product",
 			"style": {
 				"navigationBarTitleText": "商品列表",
 				"usingComponents": {
 					"van-image": "/wxcomponents/vant-weapp/image/index",
 					"van-tab": "/wxcomponents/vant-weapp/tab/index",
-					"van-tabs": "/wxcomponents/vant-weapp/tabs/index"
+					"van-tabs": "/wxcomponents/vant-weapp/tabs/index",
+					"van-icon": "/wxcomponents/vant-weapp/icon/index"
+				},
+				"onReachBottomDistance": 50
+			}
+		},
+		{
+			"path": "pages/phoneLogin/phoneLogin",
+			"style": {
+				"navigationBarTitleText": "账号登录",
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index"
+				}
+			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index"
 				}
 			}
 		}
+
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
