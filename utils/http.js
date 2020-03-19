@@ -1,3 +1,7 @@
+import {getToken} from './auth.js';
+
+let token;
+
 //默认请求头
 const defaultHeader = {
 	contentType: 'application/x-www-form-urlencoded'
@@ -41,9 +45,17 @@ XHService.prototype.post = function(config) {
 		
 // 	});
 	
-// }
+// }token
 //请求函数
 XHService.prototype._request = function(config){
+	
+	//如果是用户API则给header添加
+	if(config.userApi){
+		token = token||getToken();
+		config.header = {
+			"Bearer":token
+		}
+	}
 	
 	return new Promise((resolve, reject) => {
 	
@@ -76,13 +88,21 @@ XHService.prototype._request = function(config){
 	
 }
 
+
 export default new XHService({
 	baseUrl:'http://47.115.50.116:8080/api'
 },function(config){//请求拦截
-	
+
+	if(!config.isNoLoading){//开启loading
+		uni.showLoading({
+			title: '加载中'
+		});
+	}
 	return config;
 },function(response){//响应拦截
-    
+
+	 uni.hideLoading();//隐藏
+	 	
 	if(response.statusCode == 200){
 		return response.data;
 		

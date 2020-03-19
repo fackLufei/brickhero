@@ -1,12 +1,12 @@
+import {getToken} from './auth.js'
 //路由黑名单 未登录页面不允许跳转
-const  blackList = [];
+const  blackList = ['cart'];
 
 //路由函数
 export default  {
 	navigateTo(config){
 		
 		routeDetection(config).then(e=>{
-			console.log(uni.navigateTo);
 			uni.navigateTo(config);
 		})
 		
@@ -37,14 +37,16 @@ export default  {
 function routeDetection(config){
 	return new Promise((resolve, reject) => {
 		//登录校验
-		// let isLogin = true||getUserId();
-		// if(!isLogin){
-		// 	if(blackList.indexOf(config.url)!=-1){
-		// 		reject('未登录');
-		// 		uni.navigateTo('../pages/login')
-		// 		return;
-		// 	}
-		// }
+		let isLogin = getToken();
+		if(!isLogin){
+			if(blackList.findIndex(item=>new RegExp(item).test(config.url))!=-1){
+				uni.navigateTo({
+					url:'/pages/login/login'
+				})
+				// reject('未登录');
+				return;
+			}
+		}
 		resolve();
 	});
 }
