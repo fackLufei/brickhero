@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "empty": "/pages/user/order/components/empty",
+    "wait-to-delivery": "/pages/user/order/components/waitToDelivery",
+    "wait-to-pay": "/pages/user/order/components/waitToPay",
+    "wait-to-receive": "/pages/user/order/components/waitToReceive"
+  }
+}

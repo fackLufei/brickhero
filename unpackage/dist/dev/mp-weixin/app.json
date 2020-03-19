@@ -6,7 +6,9 @@
     "pages/login/login",
     "pages/user/order/index",
     "pages/user/record/index",
-    "pages/user/collection/index"
+    "pages/user/collection/index",
+    "pages/classify/classify",
+    "pages/product/product"
   ],
   "subPackages": [],
   "window": {
@@ -24,8 +26,14 @@
       {
         "pagePath": "pages/index/index",
         "iconPath": "static/images/shopping_mall.png",
-        "selectedIconPath": "static/images/shopping_mall-select.png",
+        "selectedIconPath": "static/images/shopping_mall_select.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "iconPath": "static/images/classify.png",
+        "selectedIconPath": "static/images/classify_select.png",
+        "text": "分类"
       },
       {
         "pagePath": "pages/cart/cart",
@@ -36,12 +44,11 @@
       {
         "pagePath": "pages/user/user",
         "iconPath": "static/images/my.png",
-        "selectedIconPath": "static/images/my-select.png",
+        "selectedIconPath": "static/images/my_select.png",
         "text": "我的"
       }
     ]
   },
   "permission": {},
-  "usingComponents": {},
-  "sitemapLocation": "sitemap43.json"
+  "usingComponents": {}
 }

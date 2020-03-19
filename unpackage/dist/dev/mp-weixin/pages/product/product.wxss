@@ -1,0 +1,195 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+page {
+  background-color: #F9F9F9;
+}
+.product .product-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding-left: -10rpx;
+  padding-top: 100rpx;
+}
+.product .product-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  min-width: 40%;
+  max-width: 50%;
+  margin-right: 10rpx;
+  height: 510rpx;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background-color: #ffffff;
+  margin-bottom: 10rpx;
+  position: relative;
+}
+.product .product-item .product-pic {
+    width: 280rpx;
+    height: 280rpx;
+}
+.product .product-item .product-name {
+    font-size: 24rpx;
+    color: #333333;
+    width: 100%;
+    margin-top: 38rpx;
+}
+.product .product-item .product-label {
+    color: #FF4552;
+    font-size: 20rpx;
+    text-align: left;
+    width: 100%;
+    margin-top: 10rpx;
+    margin-bottom: 20rpx;
+}
+.product .product-item .product-label text {
+      background-color: #FFEEEA;
+      padding: 0 8rpx;
+}
+.product .product-item .product-label-1 {
+    margin-right: 37rpx;
+}
+.product .product-item .product-info {
+    width: 100%;
+    line-height: 1;
+}
+.product .product-item .product-price {
+    color: #E51815;
+    font-size: 24rpx;
+    font-weight: 600;
+    margin-right: 13rpx;
+}
+.product .product-item .product-sale {
+    font-size: 20rpx;
+    color: #999999;
+}
+.product .product-item .shopping-cart {
+    position: absolute;
+    right: 32rpx;
+    bottom: 40rpx;
+}
+.product .my-active.my-nav-item {
+  font-size: 24rpx;
+  color: #333333;
+}
+.product .my-nav-item {
+  font-size: 24rpx;
+  color: #999;
+}
+.product .van-tabs__line {
+  background-image: -webkit-linear-gradient(#FFA97A, #FF6F42, #FF2B00);
+  background-image: linear-gradient(#FFA97A, #FF6F42, #FF2B00);
+}
+.product .no-data {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  font-size: 30rpx;
+  color: #999999;
+  z-index: -1;
+}
+.product .screening-condit {
+  height: 100rpx;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  top: 44px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.product .screening-condit .sc-item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+            flex: 1;
+    text-align: center;
+    color: #999999;
+    font-size: 24rpx;
+    position: relative;
+}
+.product .screening-condit .sc-sale::before,
+  .product .screening-condit .sc-price::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7rpx solid transparent;
+    border-right: 7rpx solid transparent;
+    border-bottom: 10rpx solid #B9B9B9;
+    top: 5rpx;
+    right: 82rpx;
+}
+.product .screening-condit .sc-sale::after,
+  .product .screening-condit .sc-price::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7rpx solid transparent;
+    border-right: 7rpx solid transparent;
+    border-top: 10rpx solid #B9B9B9;
+    bottom: 5rpx;
+    right: 82rpx;
+}
+.product .screening-condit .sc-active {
+    color: #333333;
+}
+.product .screening-condit .sc-active.sc-active-top::before {
+    border-bottom-color: #E51815;
+}
+.product .screening-condit .sc-active.sc-active-bottom::after {
+    border-top-color: #E51815;
+}
+

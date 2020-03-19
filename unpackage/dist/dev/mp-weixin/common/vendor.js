@@ -754,7 +754,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7082,7 +7082,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7103,14 +7103,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7186,7 +7186,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8525,7 +8525,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/cart/cart": {}, "pages/user/user": {}, "pages/login/login": {}, "pages/user/order/index": {}, "pages/user/record/index": {}, "pages/user/collection/index": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "搬砖侠", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#FFFFFF" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/cart/cart": { "navigationBarTitleText": "购物车", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/user/user": { "navigationBarTitleText": "个人中心", "usingComponents": { "user-info": "/pages/user/user/userInfo", "vip-info": "/pages/user/user/vipInfo" }, "usingAutoImportComponents": {} }, "pages/login/login": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/user/order/index": { "usingComponents": { "order-list": "/pages/user/order/components/orderList" }, "usingAutoImportComponents": {} }, "pages/user/record/index": { "usingComponents": { "goods": "/pages/user/record/components/goods", "no-goods": "/pages/user/record/components/noGoods" }, "usingAutoImportComponents": {} }, "pages/user/collection/index": { "usingComponents": { "goods": "/pages/user/collection/components/goods", "closed-goods": "/pages/user/collection/components/closedGoods" }, "usingAutoImportComponents": {} }, "pages/classify/classify": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/product/product": { "navigationBarTitleText": "商品列表", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "搬砖侠", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#FFFFFF" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -8542,228 +8542,146 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 9 */,
 /* 10 */,
 /* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \**********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode, /* vue-cli only */
-  components, // fixed by xxxxxx auto components
-  renderjs // fixed by xxxxxx renderjs
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // fixed by xxxxxx auto components
-  if (components) {
-    options.components = Object.assign(components, options.components || {})
-  }
-  // fixed by xxxxxx renderjs
-  if (renderjs) {
-    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
-      this[renderjs.__module] = this
-    });
-    (options.mixins || (options.mixins = [])).push(renderjs)
-  }
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 15 */
-/*!************************************************!*\
-  !*** F:/赚钱/brickhero/utils/routerIntercept.js ***!
-  \************************************************/
+/* 12 */
+/*!**************************************!*\
+  !*** F:/赚钱/brickhero/api/homeApi.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //路由黑名单 未登录页面不允许跳转
-var blackList = [];
+Object.defineProperty(exports, "__esModule", { value: true });exports.getHomeContent = getHomeContent;exports.productCateList = productCateList;exports.getProduct = getProduct;var _http = _interopRequireDefault(__webpack_require__(/*! @/utils/http.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-//路由函数
-var _default = {
-  navigateTo: function navigateTo(config) {
+//首页数据展示
+function getHomeContent() {
 
-    routeDetection(config).then(function (e) {
-      console.log(config);
-      console.log(uni.navigateTo);
-      uni.navigateTo(config);
-    });
-
-  },
-  redirectTo: function redirectTo(config) {
-    routeDetection(config).then(function (e) {
-      uni.redirectTo(config);
-    });
-  },
-  reLaunch: function reLaunch(config) {
-    routeDetection(config).then(function (e) {
-      uni.reLaunch(config);
-    });
-  },
-  switchTab: function switchTab(config) {
-    routeDetection(config).then(function (e) {
-      uni.switchTab(config);
-    });
-  },
-  navigateBack: function navigateBack(config) {
-    routeDetection(config).then(function (e) {
-      uni.navigateBack(config);
-    });
-  } };
+  return _http.default.get({
+    url: '/home/content' });
 
 
-//路由拦截 用于需登录界面,重定向问题
-exports.default = _default;function routeDetection(config) {
-  return new Promise(function (resolve, reject) {
-    //登录校验
-    // let isLogin = true||getUserId();
-    // if(!isLogin){
-    // 	if(blackList.indexOf(config.url)!=-1){
-    // 		reject('未登录');
-    // 		uni.navigateTo('../pages/login')
-    // 		return;
-    // 	}
-    // }
-    resolve();
-  });
 }
+
+//获取首页分类 
+function productCateList(parentId) {
+
+  return _http.default.get({
+    url: "/home/productCateList/".concat(parentId) });
+
+
+}
+
+//获取商品列表
+function getProduct(data, pageSize, pageNum) {
+  return _http.default.post({
+    url: "/home/product/list?pageSize=".concat(pageSize, "&pageNum=").concat(pageNum),
+    data: data });
+
+}
+
+/***/ }),
+/* 13 */
+/*!*************************************!*\
+  !*** F:/赚钱/brickhero/utils/http.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //默认请求头
+var defaultHeader = {
+  contentType: 'application/x-www-form-urlencoded'
+  // 'Content-Type': 'application/json'
+};
+
+
+//请求封装
+function XHService(data, request, response) {
+
+  this.baseUrl = data.baseUrl;
+  this.header = data.header || defaultHeader;
+  this.timeout = data.timeout || 30000;
+  this.dataType = data.dataType || 'json';
+  this.responseType = data.responseType || 'text';
+  this.interceptor = {
+    request: request, //请求前拦截
+    response: response //响应结果拦截
+  };
+
+}
+
+XHService.prototype.get = function (config) {
+
+  config.method = 'get';
+
+  return this._request(config);
+};
+
+XHService.prototype.post = function (config) {
+
+  config.method = 'post';
+
+  return this._request(config);
+};
+
+// XHService.prototype.uploadFile = function(config){
+
+// 	return new Promise((resolve, reject) => {
+
+
+// 	});
+
+// }
+//请求函数
+XHService.prototype._request = function (config) {var _this = this;
+
+  return new Promise(function (resolve, reject) {
+
+    //请求拦截处理请求数据
+    if (_this.interceptor.request) {
+      config = _this.interceptor.request(config);
+    }
+    uni.request({
+      url: _this.baseUrl + config.url,
+      method: config.method,
+      data: config.data || {},
+      header: config.header || _this.header,
+      dataType: config.dataType || _this.dataType,
+      responseType: config.responseType || _this.responseType,
+      timeout: config.timeout || _this.timeout,
+      complete: function complete(response) {
+        var res = response;
+        if (_this.interceptor.response) {
+          res = _this.interceptor.response(res);
+        }
+        if (!res) {
+          reject('返回值已被您拦截！');
+          return;
+        } else {
+          resolve(res);
+        }
+      } });
+
+  });
+
+};var _default =
+
+new XHService({
+  baseUrl: 'http://47.115.50.116:8080/api' },
+function (config) {//请求拦截
+
+  return config;
+}, function (response) {//响应拦截
+
+  if (response.statusCode == 200) {
+    return response.data;
+
+  }
+
+});exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 16 */
-/*!********************************!*\
-  !*** F:/赚钱/brickhero/store.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-_vue.default.use(_vuex.default);var _default =
-
-new _vuex.default.Store({
-  state: {
-    login: false,
-    token: '',
-    avatarUrl: '',
-    userName: 'xiaohei' },
-
-  mutations: {
-    login: function login(state, provider) {
-      console.log(state);
-      console.log(provider);
-      state.login = true;
-      state.token = provider.token;
-      state.userName = provider.userName;
-      state.avatarUrl = provider.avatarUrl;
-    },
-    logout: function logout(state) {
-      state.login = false;
-      state.token = '';
-      state.userName = '';
-      state.avatarUrl = '';
-    } } });exports.default = _default;
-
-/***/ }),
-/* 17 */
+/* 14 */
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
@@ -9713,143 +9631,232 @@ var index_esm = {
 
 
 /***/ }),
-/* 18 */,
-/* 19 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode, /* vue-cli only */
+  components, // fixed by xxxxxx auto components
+  renderjs // fixed by xxxxxx renderjs
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // fixed by xxxxxx auto components
+  if (components) {
+    options.components = Object.assign(components, options.components || {})
+  }
+  // fixed by xxxxxx renderjs
+  if (renderjs) {
+    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
+      this[renderjs.__module] = this
+    });
+    (options.mixins || (options.mixins = [])).push(renderjs)
+  }
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 18 */
+/*!************************************************!*\
+  !*** F:/赚钱/brickhero/utils/routerIntercept.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //路由黑名单 未登录页面不允许跳转
+var blackList = [];
+
+//路由函数
+var _default = {
+  navigateTo: function navigateTo(config) {
+
+    routeDetection(config).then(function (e) {
+      console.log(config);
+      console.log(uni.navigateTo);
+      uni.navigateTo(config);
+    });
+
+  },
+  redirectTo: function redirectTo(config) {
+    routeDetection(config).then(function (e) {
+      uni.redirectTo(config);
+    });
+  },
+  reLaunch: function reLaunch(config) {
+    routeDetection(config).then(function (e) {
+      uni.reLaunch(config);
+    });
+  },
+  switchTab: function switchTab(config) {
+    routeDetection(config).then(function (e) {
+      uni.switchTab(config);
+    });
+  },
+  navigateBack: function navigateBack(config) {
+    routeDetection(config).then(function (e) {
+      uni.navigateBack(config);
+    });
+  } };
+
+
+//路由拦截 用于需登录界面,重定向问题
+exports.default = _default;function routeDetection(config) {
+  return new Promise(function (resolve, reject) {
+    //登录校验
+    // let isLogin = true||getUserId();
+    // if(!isLogin){
+    // 	if(blackList.indexOf(config.url)!=-1){
+    // 		reject('未登录');
+    // 		uni.navigateTo('../pages/login')
+    // 		return;
+    // 	}
+    // }
+    resolve();
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 19 */
+/*!********************************!*\
+  !*** F:/赚钱/brickhero/store.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+_vue.default.use(_vuex.default);var _default =
+
+new _vuex.default.Store({
+  state: {
+    login: false,
+    token: '',
+    classifyList: [] //首页分类数据
+  },
+  mutations: {
+    login: function login(state, provider) {
+      console.log(state);
+      console.log(provider);
+      state.login = true;
+      state.token = provider.token;
+
+    },
+    logout: function logout(state) {
+      state.login = false;
+      state.token = '';
+    },
+    setClassifyList: function setClassifyList(state, data) {
+      state.classifyList = data;
+    } } });exports.default = _default;
+
+/***/ }),
 /* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */
-/*!**************************************!*\
-  !*** F:/赚钱/brickhero/api/homeApi.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getHomeContent = getHomeContent;exports.productCateList = productCateList;var _http = _interopRequireDefault(__webpack_require__(/*! @/utils/http.js */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-//首页数据展示
-function getHomeContent() {
-
-  return _http.default.get({
-    url: '/home/content' });
-
-
-}
-
-//获取首页分类 
-function productCateList(parentId) {
-
-  return _http.default.get({
-    url: "/home/productCateList/".concat(parentId) });
-
-
-}
-
-/***/ }),
-/* 25 */
-/*!*************************************!*\
-  !*** F:/赚钱/brickhero/utils/http.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //默认请求头
-var defaultHeader = {
-  contentType: 'application/x-www-form-urlencoded'
-  // 'Content-Type': 'application/json'
-};
-
-
-//请求封装
-function XHService(data, request, response) {
-
-  this.baseUrl = data.baseUrl;
-  this.header = data.header || defaultHeader;
-  this.timeout = data.timeout || 30000;
-  this.dataType = data.dataType || 'json';
-  this.responseType = data.responseType || 'text';
-  this.interceptor = {
-    request: request, //请求前拦截
-    response: response //响应结果拦截
-  };
-
-}
-
-XHService.prototype.get = function (config) {
-
-  config.method = 'get';
-
-  return this._request(config);
-};
-
-XHService.prototype.post = function (config) {
-
-  config.method = 'post';
-
-  return this._request(config);
-};
-
-// XHService.prototype.uploadFile = function(config){
-
-// 	return new Promise((resolve, reject) => {
-
-
-// 	});
-
-// }
-//请求函数
-XHService.prototype._request = function (config) {var _this = this;
-
-  return new Promise(function (resolve, reject) {
-
-    //请求拦截处理请求数据
-    if (_this.interceptor.request) {
-      config = _this.interceptor.request(config);
-    }
-    uni.request({
-      url: _this.baseUrl + config.url,
-      method: config.method,
-      data: config.data || {},
-      header: config.header || _this.header,
-      dataType: config.dataType || _this.dataType,
-      responseType: config.responseType || _this.responseType,
-      timeout: config.timeout || _this.timeout,
-      complete: function complete(response) {
-        var res = response;
-        if (_this.interceptor.response) {
-          res = _this.interceptor.response(res);
-        }
-        if (!res) {
-          reject('返回值已被您拦截！');
-          return;
-        } else {
-          resolve(res);
-        }
-      } });
-
-  });
-
-};var _default =
-
-new XHService({
-  baseUrl: 'http://47.115.50.116:8080/api' },
-function (config) {//请求拦截
-
-  return config;
-}, function (response) {//响应拦截
-
-  if (response.statusCode == 200) {
-    return response.data;
-
-  }
-
-});exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
+/* 24 */,
+/* 25 */,
 /* 26 */,
 /* 27 */,
 /* 28 */,

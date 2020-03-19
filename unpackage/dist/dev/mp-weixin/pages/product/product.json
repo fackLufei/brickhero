@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "usingComponents": {
+    "van-image": "/wxcomponents/vant-weapp/image/index",
+    "van-tab": "/wxcomponents/vant-weapp/tab/index",
+    "van-tabs": "/wxcomponents/vant-weapp/tabs/index"
+  }
+}

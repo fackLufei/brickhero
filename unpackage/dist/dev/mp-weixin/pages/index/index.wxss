@@ -67,7 +67,8 @@
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  margin-bottom: 54rpx;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 .index .cate-section .cate-item {
     display: -webkit-box;
@@ -82,9 +83,8 @@
             align-items: center;
     color: #303133;
     font-size: 26rpx;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-            flex: 1;
+    width: 33.33%;
+    margin-bottom: 54rpx;
 }
 .index .cate-section image {
     width: 140rpx;

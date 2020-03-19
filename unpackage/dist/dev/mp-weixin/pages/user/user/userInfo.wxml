@@ -1,0 +1,1 @@
+<view class="user-box data-v-6ab5bba6"><view class="user-info data-v-6ab5bba6"><image class="user-icon data-v-6ab5bba6" mode="aspectFill" src="{{user.icon}}"></image><text class="user-name data-v-6ab5bba6">杨*龙</text><text class="user-normal data-v-6ab5bba6">普通用户</text></view><text class="user-info-more data-v-6ab5bba6">></text></view>

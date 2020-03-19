@@ -76,7 +76,7 @@ export default {
       settingConfg: [
         {
           name: "VIP",
-          path: "./user/vipRenewal"
+          path: "./user/vipRenewals"
         },
         {
           name: "地址"
