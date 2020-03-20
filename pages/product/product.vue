@@ -25,7 +25,7 @@
 							<text class="product-price">&#65509; {{item.price}}</text>
 							<text class="product-sale">已销售{{item.sale}}{{item.unit}}</text>
 						</view>
-						<van-icon class="shopping-cart" name="shopping-cart-o" @tap="shopCart" />
+						<van-icon class="shopping-cart" name="shopping-cart-o" @tap="shopCart(item)" />
 					</view>
 				</view>
 			</van-tab>
@@ -51,7 +51,7 @@
 		getProduct
 	} from '@/api/homeApi.js';
 	import {
-		mapState
+		mapMutations
 	} from 'vuex';
 	
 	let currTabId;
@@ -90,6 +90,7 @@
 			console.log(e);
 		},
 		methods: {
+			...mapMutations(['setRouterWait']),
 			getGoodsData(id) {//获取商品列表
 				let params = {
 					keyword:"",
@@ -127,10 +128,18 @@
 				this.tabActive = e.detail.name;
 				this.getGoodsData(this.tabActive);
 			},
-			shopCart(){
+			shopCart(item){
+				
+				this.setRouterWait({
+					routerPath:'../cart/cart',
+					routerType:'switchTab',
+					routerData:item
+				});
+				
 				this.$router.switchTab({
 					url: `../cart/cart`
 				});
+				
 			}
 		}
 	}
