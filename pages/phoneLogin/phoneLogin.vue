@@ -1,22 +1,16 @@
 <template>
 	<view class="phone-login">
-			<!-- 手机号码 -->
-			<van-field :value="phone" @change="changePhone" placeholder="请输入账号" type="number" :maxlength="11" />
-			<!-- 密码 -->
-			<van-field
-			    :value="password"
-				@change="changePassword"
-			    type="password"
-			    placeholder="请输入密码"
-				:maxlength="26"
-			  />
+		<!-- 手机号码 -->
+		<van-field :value="phone" @change="changePhone" placeholder="请输入账号" type="number" :maxlength="11" />
+		<!-- 密码 -->
+		<van-field :value="password" @change="changePassword" type="password" placeholder="请输入密码" :maxlength="26" />
 		<!-- 登录 -->
 		<view class="login-in">
 			<van-button :disabled="!phone||!password" color="linear-gradient(to right, #FFA97A, #FF6F42,#FF2B00)" type="primary"
 			 @click="phoneLogin" :loading="loading" block>登录</van-button>
 		</view>
 		<!-- 还没注册 -->
-			 <view class="tips" @click="register">还没注册？点击注册</view>
+		<view class="tips" @click="register">还没注册？点击注册</view>
 		<!-- 微信登录 -->
 		<view class="wx-login" @click="wxLogin">
 			<image fit="contain" class="wx-logo" src="/static/images/timg.png" />
@@ -31,26 +25,38 @@
 	import {
 		login
 	} from '../../api/login.js';
-	import {setToken,setUserInfo} from '@/utils/auth.js';
+	import {
+		setToken,
+		setUserInfo
+	} from '@/utils/auth.js';
+	import {
+		goPage
+	} from '@/utils/index.js';
+	import {
+		mapState
+	} from 'vuex';
 	export default {
 		data() {
 			return {
 				phone: '',
 				password: '',
-				loading:false
+				loading: false
 			}
 		},
+		computed: {
+			...mapState(['routerWait'])
+		},
 		methods: {
-			register(){
+			register() {
 				uni.navigateTo({
-					url:'/pages/register/register'
+					url: '/pages/register/register'
 				});
 			},
 			changePhone(e) {
-				this.phone = e.detail.replace(/\s/g,'');
+				this.phone = e.detail.replace(/\s/g, '');
 			},
 			changePassword(e) {
-				this.password =  e.detail.replace(/\s/g,'');
+				this.password = e.detail.replace(/\s/g, '');
 			},
 			getCode() {
 				getAuthCode(this.phone);
@@ -60,24 +66,28 @@
 				let password = this.password;
 				this.loading = true;
 				login({
-					username:phone,
+					username: phone,
 					password
-				}).then(res=>{
-					if(res.code == 200){
+				}).then(res => {
+					if (res.code == 200) {
 						uni.showToast({
-							icon:'none',
-							title:'登录成功'
+							icon: 'none',
+							title: '登录成功'
 						})
 						setToken(res.data.token);
 						setUserInfo(res.data.userInfo);
-					}else{
+
+						if (this.routerWait.routerPath) {
+							goPage(this.routerWait.routerType, this.routerWait.routerPath);
+						}
+					} else {
 						uni.showToast({
-							icon:'none',
-							title:res.message
+							icon: 'none',
+							title: res.message
 						})
 					}
 					this.loading = false;
-				}).catch(()=>{
+				}).catch(() => {
 					this.loading = false;
 				});
 
