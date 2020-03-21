@@ -754,7 +754,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7082,7 +7082,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7103,14 +7103,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7186,7 +7186,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8525,7 +8525,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/cart/cart": { "navigationBarTitleText": "购物车", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/user/user": { "navigationBarTitleText": "个人中心", "usingComponents": { "user-info": "/pages/user/user/userInfo", "vip-info": "/pages/user/user/vipInfo" }, "usingAutoImportComponents": {} }, "pages/login/login": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/user/order/index": { "usingComponents": { "order-list": "/pages/user/order/components/orderList" }, "usingAutoImportComponents": {} }, "pages/user/record/index": { "usingComponents": { "goods": "/pages/user/record/components/goods", "no-goods": "/pages/user/record/components/noGoods" }, "usingAutoImportComponents": {} }, "pages/user/collection/index": { "usingComponents": { "goods": "/pages/user/collection/components/goods", "closed-goods": "/pages/user/collection/components/closedGoods" }, "usingAutoImportComponents": {} }, "pages/classify/classify": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/product/product": { "navigationBarTitleText": "商品列表", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "搬砖侠", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#FFFFFF" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/user/index": { "navigationBarTitleText": "个人中心" }, "pages/login/login": { "navigationBarTitleText": "登录/注册" }, "pages/user/order/index": {}, "pages/user/record/index": {}, "pages/user/collection/index": {}, "pages/user/user/vipPay": {}, "pages/user/user/vipRenewals": {}, "pages/classify/classify": { "navigationBarTitleText": "分类" }, "pages/product/product": { "navigationBarTitleText": "商品列表", "onReachBottomDistance": 50 }, "pages/phoneLogin/phoneLogin": { "navigationBarTitleText": "账号登录" }, "pages/register/register": { "navigationBarTitleText": "注册" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "搬砖侠", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#FFFFFF" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -8587,7 +8587,11 @@ function getProduct(data, pageSize, pageNum) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //默认请求头
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _auth = __webpack_require__(/*! ./auth.js */ 14);
+
+var token;
+
+//默认请求头
 var defaultHeader = {
   contentType: 'application/x-www-form-urlencoded'
   // 'Content-Type': 'application/json'
@@ -8630,9 +8634,17 @@ XHService.prototype.post = function (config) {
 
 // 	});
 
-// }
+// }token
 //请求函数
 XHService.prototype._request = function (config) {var _this = this;
+
+  //如果是用户API则给header添加
+  if (config.userApi) {
+    token = token || (0, _auth.getToken)();
+    config.header = {
+      "Bearer": token };
+
+  }
 
   return new Promise(function (resolve, reject) {
 
@@ -8665,12 +8677,20 @@ XHService.prototype._request = function (config) {var _this = this;
 
 };var _default =
 
+
 new XHService({
   baseUrl: 'http://47.115.50.116:8080/api' },
 function (config) {//请求拦截
 
+  if (!config.isNoLoading) {//开启loading
+    uni.showLoading({
+      title: '加载中' });
+
+  }
   return config;
 }, function (response) {//响应拦截
+
+  uni.hideLoading(); //隐藏
 
   if (response.statusCode == 200) {
     return response.data;
@@ -8682,6 +8702,57 @@ function (config) {//请求拦截
 
 /***/ }),
 /* 14 */
+/*!*************************************!*\
+  !*** F:/赚钱/brickhero/utils/auth.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.setToken = setToken;exports.getToken = getToken;exports.setUserInfo = setUserInfo;exports.getUserInfo = getUserInfo;exports.getCodeMax = getCodeMax;exports.setCodeMax = setCodeMax;exports.getCodeEnd = getCodeEnd;exports.setCodeEnd = setCodeEnd;
+function setToken(data) {
+
+  return uni.setStorageSync('token', data);
+}
+
+function getToken() {
+
+  return uni.getStorageSync('token');
+}
+
+function setUserInfo(data) {
+
+  return uni.setStorageSync('userInfo', JSON.stringify(data));
+}
+
+function getUserInfo() {
+  var userInfo = uni.getStorageSync('userInfo');
+  if (userInfo) {
+    return JSON.parse(userInfo);
+  } else {
+    return {};
+  }
+}
+
+function getCodeMax() {
+  return uni.getStorageSync('codeMax');
+}
+
+function setCodeMax(max) {
+  return uni.setStorageSync('codeMax', max);
+}
+
+function getCodeEnd() {
+  return uni.getStorageSync('codeEnd');
+}
+
+function setCodeEnd(date) {
+  return uni.setStorageSync('codeEnd', date);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 15 */
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
@@ -9631,9 +9702,9 @@ var index_esm = {
 
 
 /***/ }),
-/* 15 */,
 /* 16 */,
-/* 17 */
+/* 17 */,
+/* 18 */
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -9753,7 +9824,7 @@ function normalizeComponent (
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /*!************************************************!*\
   !*** F:/赚钱/brickhero/utils/routerIntercept.js ***!
   \************************************************/
@@ -9761,16 +9832,16 @@ function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //路由黑名单 未登录页面不允许跳转
-var blackList = [];
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _auth = __webpack_require__(/*! ./auth.js */ 14);
+//路由黑名单 未登录页面不允许跳转
+var blackList = ['cart'];
 
 //路由函数
 var _default = {
   navigateTo: function navigateTo(config) {
 
     routeDetection(config).then(function (e) {
-      console.log(config);
-      console.log(uni.navigateTo);
+
       uni.navigateTo(config);
     });
 
@@ -9801,21 +9872,23 @@ var _default = {
 exports.default = _default;function routeDetection(config) {
   return new Promise(function (resolve, reject) {
     //登录校验
-    // let isLogin = true||getUserId();
-    // if(!isLogin){
-    // 	if(blackList.indexOf(config.url)!=-1){
-    // 		reject('未登录');
-    // 		uni.navigateTo('../pages/login')
-    // 		return;
-    // 	}
-    // }
+    var isLogin = (0, _auth.getToken)();
+    if (!isLogin) {
+      if (blackList.findIndex(function (item) {return new RegExp(item).test(config.url);}) != -1) {
+        uni.navigateTo({
+          url: '/pages/login/login' });
+
+        // reject('未登录');
+        return;
+      }
+    }
     resolve();
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 19 */
+/* 20 */
 /*!********************************!*\
   !*** F:/赚钱/brickhero/store.js ***!
   \********************************/
@@ -9823,35 +9896,34 @@ exports.default = _default;function routeDetection(config) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 15));
+var _auth = __webpack_require__(/*! @/utils/auth.js */ 14);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 _vue.default.use(_vuex.default);var _default =
 
 new _vuex.default.Store({
   state: {
-    login: false,
-    token: '',
-    classifyList: [] //首页分类数据
+    userInfo: (0, _auth.getUserInfo)(), //用户信息
+    token: (0, _auth.getToken)() || '', //token
+    classifyList: [], //首页分类数据
+    routerWait: {} //{routerPath:'',routerData:{}}
   },
   mutations: {
-    login: function login(state, provider) {
-      console.log(state);
-      console.log(provider);
-      state.login = true;
-      state.token = provider.token;
-
-    },
-    logout: function logout(state) {
-      state.login = false;
+    logout: function logout(state) {//退出登录
+      state.userInfo = {};
       state.token = '';
+      uni.clearStorageSync();
     },
-    setClassifyList: function setClassifyList(state, data) {
+    setClassifyList: function setClassifyList(state, data) {//商品分类一级数据
       state.classifyList = data;
+    },
+    setRouterWait: function setRouterWait(state, data) {//跳转拦截数据
+      state.routerWait = data;
     } } });exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
@@ -9871,18 +9943,19 @@ new _vuex.default.Store({
 /* 37 */,
 /* 38 */,
 /* 39 */,
-/* 40 */
+/* 40 */,
+/* 41 */
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 41);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 42);
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9913,7 +9986,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 42);
+module.exports = __webpack_require__(/*! ./runtime */ 43);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9929,7 +10002,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -10658,6 +10731,98 @@ if (hadRuntime) {
   })() || Function("return this")()
 );
 
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
+/*!************************************!*\
+  !*** F:/赚钱/brickhero/api/login.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.wxLogin = wxLogin;exports.login = login;exports.getAuthCode = getAuthCode;exports.register = register;var _http = _interopRequireDefault(__webpack_require__(/*! @/utils/http.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+//微信会员登录
+function wxLogin(data) {
+  return _http.default.post({
+    url: '/sso/login/wx',
+    data: data });
+
+}
+//会员登录 POST /api/sso/login
+function login(data) {
+  return _http.default.post({
+    url: "/sso/login?username=".concat(data.username, "&password=").concat(data.password),
+    isNoLoading: true });
+
+}
+//获取验证码
+function getAuthCode(telephone) {
+  return _http.default.get({
+    url: '/sso/getAuthCode',
+    data: { telephone: telephone } });
+
+}
+//注冊 POST /api/sso/register
+function register(data) {
+  return _http.default.post({
+    url: "/sso/register?username=".concat(data.telephone, "&password=").concat(data.password, "&telephone=").concat(data.telephone, "&authCode=").concat(data.authCode) });
+
+}
+
+/***/ }),
+/* 60 */
+/*!**************************************!*\
+  !*** F:/赚钱/brickhero/utils/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.goPage = goPage; //登录成功后跳转
+function goPage(type, path) {
+
+  switch (type) {
+    case 'navigateTo':
+      uni.navigateTo({
+        url: path });
+
+      break;
+    case 'redirectTo':
+      uni.redirectTo({
+        url: path });
+
+      break;
+    case 'reLaunch':
+      uni.reLaunch({
+        url: path });
+
+      break;
+    case 'switchTab':
+      uni.switchTab({
+        url: path });
+
+      break;}
+
+
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 ]]);

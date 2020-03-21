@@ -1,11 +1,14 @@
 <template>
   <view class="vip-container">
-    <view class="vip-header">
+    <view
+      class="vip-header"
+      style="background:url(/static/images/vip_box.png);background-size: 100% 101%;"
+    >
       <view class="default-user">
         <image
           class="vip-img-name"
           :src="vipName"
-          mode="aspectFill"
+          mode="aspectFit"
         ></image>
         <image
           class="vip-img-logo"
@@ -17,7 +20,7 @@
         <image
           class="vip-img-description"
           :src="vipDescription"
-          mode="aspectFill"
+          mode="aspectFit"
         ></image>
       </view>
     </view>
@@ -42,9 +45,10 @@
       <text class="header">选择套餐</text>
       <view class="pay-way-list">
         <view
-          class="pay-way-item"
           v-for="(_item,index) in payConfig"
+          :class="[{'pay-way-item active': selectIndex === index},{'pay-way-item': selectIndex !== index}]"
           :key="index"
+          @click="choose(index)"
         >
           <text class="month">{{_item.month}}</text>
           <view>
@@ -60,7 +64,7 @@
         <text class="info1">开通会员表示您同意</text>
         <text class="info2"> 会员服务协议</text>
       </view>
-      <button>立即开通</button>
+      <button style="background:url(/static/images/order_btn.png)">立即开通</button>
     </view>
   </view>
 </template>
@@ -70,21 +74,26 @@ export default {
   components: {},
   data() {
     return {
-      vipName: "",
-      vipLogo: "",
-      vipDescription: "",
+      vipName: "/static/images/vip_banzhuanxia.png",
+      vipLogo: "/static/images/vip_logo.png",
+      vipDescription: "/static/images/vip_info.png",
+      selectIndex: 2,
       vipConfig: [
         {
-          name: "全场低价"
+          name: "全场低价",
+          image: "/static/images/vip_low.png"
         },
         {
-          name: "专属客服"
+          name: "专属客服",
+          image: "/static/images/vip_service.png"
         },
         {
-          name: "免运退换"
+          name: "免运退换",
+          image: "/static/images/vip_car.png"
         },
         {
-          name: "无痕代发"
+          name: "无痕代发",
+          image: "/static/images/vip_delivery.png"
         }
       ],
       payConfig: [
@@ -109,46 +118,57 @@ export default {
       title: "VIP"
     });
   },
-  methods: {}
+  methods: {
+    choose(index) {
+      this.selectIndex = index
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
 .vip-container {
   background: rgba(249, 249, 249, 1);
   .vip-header {
+    padding: 30rpx 0 40rpx;
+    box-sizing: border-box;
+
     height: 328upx;
     margin: 0 31upx 0 29upx;
     // width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    border: 1px dashed red;
+    // border: 1px dashed red;
     background: linear-gradient(
       137deg,
       rgba(238, 238, 238, 0) 0%,
       rgba(255, 255, 255, 1) 100%
     );
     box-shadow: 0px 10px 15px -14px #464141;
+    .default-user {
+      display: flex;
+      align-items: center;
+    }
     .vip-img-name {
       height: 57upx;
       width: 123upx;
-      border: 1px dashed red;
+      // border: 1px dashed red;
       margin-left: 72upx;
       margin-top: 30upx;
     }
     .vip-img-logo {
       height: 32upx;
       width: 66upx;
-      border: 1px dashed red;
+      // border: 1px dashed red;
       margin-left: 10upx;
       margin-top: 30upx;
     }
     .vip-img-description {
       height: 40upx;
-      width: 590upx;
-      border: 1px dashed red;
+      width: 450upx;
+      // border: 1px dashed red;
       margin-left: 72upx;
-      margin-bottom: 30upx;
+      // margin-bottom: 30upx;
     }
   }
   .vip-list {
@@ -181,7 +201,7 @@ export default {
       .vip-img {
         width: 88upx;
         height: 88upx;
-        border: 1px dashed red;
+        // border: 1px dashed red;
       }
       text {
         font-size: 24upx;
@@ -245,7 +265,7 @@ export default {
         color: rgba(102, 102, 102, 1);
         line-height: 68upx;
       }
-      &:active {
+      &.active {
         border-radius: 6upx;
         border: 2upx solid;
         border-image: linear-gradient(
@@ -285,6 +305,7 @@ export default {
   }
   .vip-agreement-box {
     background: #fff;
+    margin: 0 30upx;
     .agreement-box {
       padding: 20upx;
       padding-left: 29upx;
@@ -312,6 +333,7 @@ export default {
       font-weight: 500;
       color: rgba(255, 255, 255, 1);
       margin-bottom: 100upx;
+      background-size: 100%;
     }
   }
 }
