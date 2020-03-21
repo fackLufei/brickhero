@@ -1,1 +1,1 @@
-<view class="empty-box data-v-877bc388"><image class="on-order-img data-v-877bc388" src="{{image}}" mode="aspectFill"></image></view>
+<view class="empty-box data-v-877bc388"><image class="on-order-img data-v-877bc388" src="{{image}}" mode="aspectFit"></image></view>

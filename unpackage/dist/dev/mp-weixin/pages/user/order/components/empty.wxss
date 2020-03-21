@@ -42,7 +42,7 @@
 }
 .empty-box .on-order-img.data-v-877bc388 {
     width: 209rpx;
-    height: 209rpx;
+    height: 300rpx;
     margin-top: 164rpx;
 }
 

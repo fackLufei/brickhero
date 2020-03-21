@@ -4,13 +4,15 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
-		"minified": true,
-		"es6": true
+		"urlCheck": true,
+		"es6": true,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
-	"appid": "wx0dfef06cb0c96d01",
+	"appid": "touristappid",
 	"projectname": "brickHero",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

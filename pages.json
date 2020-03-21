@@ -19,7 +19,7 @@
 			}
 		},
 		{
-			"path": "pages/user/user",
+			"path": "pages/user/index",
 			"style": {
 				"navigationBarTitleText": "个人中心",
 				"usingComponents": {
@@ -58,6 +58,24 @@
 		},
 		{
 			"path": "pages/user/collection/index",
+			"style": {
+				"usingComponents": {
+					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
+					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
+				}
+			}
+		},
+		{
+			"path": "pages/user/user/vipPay",
+			"style": {
+				"usingComponents": {
+					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
+					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
+				}
+			}
+		},
+		{
+			"path": "pages/user/user/vipRenewals",
 			"style": {
 				"usingComponents": {
 					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
@@ -141,7 +159,7 @@
 				"text": "购物车"
 			},
 			{
-				"pagePath": "pages/user/user",
+				"pagePath": "pages/user/index",
 				"iconPath": "static/images/my.png",
 				"selectedIconPath": "static/images/my_select.png",
 				"text": "我的"

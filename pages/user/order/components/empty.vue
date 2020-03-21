@@ -3,7 +3,7 @@
     <image
       class="on-order-img"
       :src="image"
-      mode="aspectFill"
+      mode="aspectFit"
     ></image>
   </view>
 </template>
@@ -12,8 +12,7 @@
 export default {
   data() {
     return {
-      image:
-        "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
+      image: "/static/images/order_empty.png"
     };
   },
   async onReady() {}
@@ -28,7 +27,7 @@ export default {
   flex-direction: column;
   .on-order-img {
     width: 209upx;
-    height: 209upx;
+    height: 300upx;
     margin-top: 164upx;
   }
 }

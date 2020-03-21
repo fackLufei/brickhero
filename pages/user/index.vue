@@ -1,6 +1,7 @@
 <template>
   <view class="user-container">
-    <user-info></user-info>
+    <!-- <user-info></user-info> -->
+     <vip-info></vip-info>
     <view class="setting-box">
       <view class="setting-list">
         <view
@@ -9,11 +10,11 @@
           :key="index"
           @click="handlerNavigateToUser(_item.path, _item.name)"
         >
-          <van-icon
+          <image
             class="my-icon"
-            :name="_item.icon"
-            info="9"
-          />
+            :src="_item.icon"
+            mode="aspectFill"
+          ></image>
           <text>{{_item.name}}</text>
         </view>
       </view>
@@ -29,11 +30,11 @@
           :key="index"
           @click="handlerNavigateToOrder(_item.path, _item.name)"
         >
-          <van-icon
+          <image
             class="my-icon"
-            :name="_item.icon"
-            info="9"
-          />
+            :src="_item.icon"
+            mode="aspectFill"
+          ></image>
           <text>{{_item.name}}</text>
         </view>
       </view>
@@ -50,11 +51,11 @@
           :key="index"
           @click="handlerNavigateTo(_item.path)"
         >
-          <van-icon
+          <image
             class="my-icon"
-            :name="_item.icon"
-            info="9"
-          />
+            :src="_item.icon"
+            mode="aspectFill"
+          ></image>
           <text>{{_item.name}}</text>
         </view>
       </view>
@@ -65,7 +66,7 @@
 <script>
 import UserInfo from "./user/userInfo";
 import VipInfo from "./user/vipInfo";
-import aa from "./user/VIPRenewals";
+import aa from "./user/vipRenewals";
 export default {
   components: {
     UserInfo,
@@ -77,50 +78,65 @@ export default {
       settingConfg: [
         {
           name: "VIP",
-          path: "./user/vipRenewal"
+          path: "./user/vipRenewals", // 开通
+          icon: "/static/images/user_vip.png"
         },
         {
-          name: "地址"
+          name: "地址",
+          path: "./address/index",
+          icon: "/static/images/user_address.png"
         },
         {
           name: "浏览",
-          path: "./record/index"
+          path: "./record/index",
+          icon: "/static/images/user_record.png"
         },
         {
           name: "收藏",
-          path: "./collection/index"
+          path: "./collection/index",
+          icon: "/static/images/user_collection.png"
         }
       ],
       orderConfig: [
         {
           name: "全部订单",
-          path: "./order/index"
+          path: "./order/index",
+          icon: "/static/images/user_order_all.png"
         },
         {
           name: "待支付",
-          path: "./order/index"
+          path: "./order/index",
+          icon: "/static/images/user_order_pay.png"
         },
         {
           name: "待发货",
-          path: "./order/index"
+          path: "./order/index",
+          icon: "/static/images/user_order_deliver.png"
         },
         {
           name: "待收货",
           path: "./order/index",
-          icon: "chat-o",
+          icon: "/static/images/user_order_receive.png",
           num: 1
         }
       ],
       serverConfig: [
         {
-          name: "合作"
+          name: "合作",
+          icon: "/static/images/user_cooperation.png"
         },
         {
-          name: "客服"
+          name: "客服",
+          icon: "/static/images/user_customer_service.png"
         },
         {
-          name: "关于"
-        }
+          name: "关于",
+          icon: "/static/images/user_about.png"
+        },
+        {
+          name: "",
+          icon: ""
+        },
       ]
     };
   },
@@ -132,11 +148,14 @@ export default {
   },
   methods: {
     handlerNavigateToUser(path, settingType) {
-      if (settingType === "VIP" && !this.user.vip) {
-        this.$router.navigateTo({ url: "./user/vipPay" });
-        return;
-      }
+      // if (settingType === "VIP" && !this.user.vip) {
+      //   续费
+      //   this.$router.navigateTo({ url: "./user/vipPay" });
+      //   return;
+      // }
+      // 开通
       this.$router.navigateTo({ url: path });
+      
     },
     handlerNavigateTo(path) {
       this.$router.navigateTo({ url: path });
@@ -167,7 +186,7 @@ export default {
   .my-icon {
     width: 74upx;
     height: 74upx;
-    border: 1px dashed red;
+    // border: 1px dashed red;
   }
   .order-list-header,
   .server-list-hearder {

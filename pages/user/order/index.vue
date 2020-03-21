@@ -156,9 +156,10 @@ export default {
           left: 50%;
           bottom: 0;
           transform: translateX(-50%);
-          width: 44px;
-          height: 0;
+          width: 44upx;
+          height: 2upx;
           border-bottom: 2px solid #e51815;
+          // background: url("/static/images/order_slider.png");
         }
       }
     }
