@@ -25,6 +25,11 @@
 /* 透明度 */
 /* 文章场景相关 */
 .collection-container.data-v-7e23cfe8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -33,6 +38,7 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
+  overflow: hidden;
 }
 .collection-container .collection-header.data-v-7e23cfe8 {
     display: -webkit-box;
@@ -67,7 +73,12 @@
     -webkit-box-flex: 1;
     -webkit-flex: 1;
             flex: 1;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0;
+}
+.collection-container .collection-scroll-content.edit.data-v-7e23cfe8 {
+      margin-bottom: 165rpx;
 }
 .collection-container .collection-scroll-content .order-item.data-v-7e23cfe8 {
       display: -webkit-box;
@@ -83,5 +94,36 @@
 }
 .collection-container .collection-scroll-content .checkbox-icon.data-v-7e23cfe8 {
       margin-left: 32rpx;
+}
+.collection-container .collection-footer.data-v-7e23cfe8 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    height: 98rpx;
+    background: white;
+    box-shadow: 0px -4rpx 7rpx 0px rgba(0, 0, 0, 0.03);
+    padding: 10rpx 30rpx 68rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+}
+.collection-container .collection-footer button.data-v-7e23cfe8 {
+      height: 90rpx;
+      line-height: 90rpx;
+      width: 276rpx;
+      font-size: 30rpx;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: white;
+      background-size: 100%;
+      margin: 0;
 }
 

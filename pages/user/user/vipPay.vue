@@ -61,7 +61,7 @@
         <text class="info1">开通会员表示您同意</text>
         <text class="info2"> 会员服务协议</text>
       </view>
-      <button style="background:url(/static/images/order_btn.png)">立即续费</button>
+      <button style="background:url(/static/images/order_btn.png);background-size:100%">立即续费</button>
     </view>
   </view>
 </template>
@@ -333,11 +333,13 @@ export default {
         font-weight: 400;
         color: #333333;
         line-height: 33upx;
+        text-decoration:underline 
       }
       margin-bottom: 248upx;
     }
     button {
       height: 90upx;
+      line-height: 90upx;
       font-size: 30upx;
       font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;

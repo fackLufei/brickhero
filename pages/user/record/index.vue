@@ -15,6 +15,7 @@
     </view>
     <scroll-view
       class="record-scroll-content"
+      :class="{edit:isEdit}"
       scroll-y
     >
       <view v-if="goodsList.length">
@@ -47,8 +48,18 @@
         </van-checkbox-group>
       </view>
     </scroll-view>
-    <view>
-
+    <view
+      class="collection-footer"
+      v-if="isEdit"
+    >
+      <van-checkbox
+        slot="right-icon"
+        class="checkbox-All"
+        v-model="isSelectAll"
+        @change="selectAll()"
+        ref="checkboxes"
+      >全选</van-checkbox>
+      <button style="background:url(/static/images/order_btn.png);background-size:100%">取消收藏</button>
     </view>
   </view>
 </template>
@@ -64,7 +75,7 @@ export default {
   data() {
     return {
       isEdit: false,
-      selectList: [1,2],
+      selectList: [1, 2],
       goodsList: [
         {
           id: 1,
@@ -75,25 +86,25 @@ export default {
         },
         {
           id: 2,
-           _isChecked:false,
+          _isChecked: false,
           image:
             "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
         },
         {
           id: 3,
-           _isChecked:false,
+          _isChecked: false,
           image:
             "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
         },
         {
           id: 4,
-           _isChecked:false,
+          _isChecked: false,
           image:
             "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
         },
         {
           id: 5,
-           _isChecked:false,
+          _isChecked: false,
           image:
             "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
         }
@@ -115,9 +126,9 @@ export default {
     },
     handlerDelete() {},
     handlerSelect(item) {
-      let itemData = this.goodsList.find(val=>val.id === item.id)
-      item._isChecked.detail = !item._isChecked.detail
-      console.log(this.selectList,item._isChecked,itemData._isChecked);
+      let itemData = this.goodsList.find(val => val.id === item.id);
+      item._isChecked.detail = !item._isChecked.detail;
+      console.log(this.selectList, item._isChecked, itemData._isChecked);
     },
     selectChange() {
       console.log(this.selectList);
@@ -128,6 +139,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .record-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -157,6 +173,9 @@ export default {
   .record-scroll-content {
     flex: 1;
     overflow-x: hidden;
+    &.edit {
+      margin-bottom: 165upx;
+    }
     .order-item {
       display: flex;
       flex-direction: row;
@@ -164,6 +183,31 @@ export default {
     }
     .checkbox-icon {
       margin-left: 32upx;
+    }
+  }
+  .collection-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    height: 98upx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px -4upx 7upx 0px rgba(0, 0, 0, 0.03);
+    padding: 10upx 30upx 67upx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      height: 90upx;
+      line-height: 90upx;
+      width: 276upx;
+      font-size: 30upx;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+      background-size: 100%;
+      margin: 0;
     }
   }
 }

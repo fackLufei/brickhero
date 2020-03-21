@@ -191,6 +191,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
 {
   components: {
     Goods: Goods,
@@ -199,6 +208,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isEdit: false,
+      isSelectAll: false,
       selectList: [1, 2],
       goodsList: [
       {
@@ -228,6 +238,12 @@ __webpack_require__.r(__webpack_exports__);
 
       {
         id: 5,
+        _isChecked: false,
+        image:
+        "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg" },
+
+      {
+        id: 6,
         _isChecked: false,
         image:
         "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg" }] };

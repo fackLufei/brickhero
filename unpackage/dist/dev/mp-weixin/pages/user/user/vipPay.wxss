@@ -264,9 +264,11 @@
         font-weight: 400;
         color: #333333;
         line-height: 33rpx;
+        text-decoration: underline;
 }
 .vip-container .vip-agreement-box button.data-v-58762418 {
       height: 90rpx;
+      line-height: 90rpx;
       font-size: 30rpx;
       font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
