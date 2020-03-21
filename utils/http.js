@@ -53,7 +53,7 @@ XHService.prototype._request = function(config){
 	if(config.userApi){
 		token = token||getToken();
 		config.header = {
-			"Bearer":token
+			"Authorization":"Bearer " + token
 		}
 	}
 	
