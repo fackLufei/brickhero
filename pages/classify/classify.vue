@@ -7,15 +7,15 @@
 		</van-sticky>
 		<view class="tree-select">
 			<scroll-view scroll-y class="left-aside">
-				<view v-for="item in classifyList" :key="item.id" class="f-item" :class="{active: item.id == currentId}" @click="onClickNav(item)">
+				<view v-for="(item,index) in classifyList" :key="index" class="f-item" :class="{active: index == currentId}" @tap="onClickNav(item,index)">
 					{{item.name}}
 				</view>
 			</scroll-view>
 			<scroll-view scroll-with-animation scroll-y class="right-aside">
 					<view class="t-list">
-						<view @click="rightItemClick(titem)" v-if="titem.pid === item.id" class="t-item" v-for="titem in rightItemList"
+						<view @tap="rightItemClick(titem)"  class="t-item" v-for="titem in currentSubCategory"
 						 :key="titem.id">
-							<image :src="titem.icon"></image>
+							<image :src="titem.picUrl"></image>
 							<text>{{titem.name}}</text>
 						</view>
 					</view>
@@ -27,54 +27,36 @@
 
 <script>
 	import {
-		productCateList
+		getCurrentCategory
 	} from '@/api/homeApi.js';
 	import {
 		mapState,
 		mapMutations
 	} from 'vuex';
 	export default {
-		onLoad() {
-			if(this.classifyList.length>0){
-				this.initData(this.classifyList[0].id);
-			}else{
-				//获取首页分类
-				productCateList(0).then(res => {
-					if (res.code == 200) {
-						this.setClassifyList(res.data);
-						this.initData(res.data[0].id);
-					}
-				})
-			}
-		},
 		computed: {
-			...mapState(['classifyList'])
+			...mapState(['classifyList','currentCategory','currentSubCategory'])
 		},
 		data() {
 			return {
-				currentId: 0,
-				rightItemList:[]
+				currentId: 0
 			}
 		},
 		methods: {
-			...mapMutations(['setClassifyList']),
-			initData(id){
-				this.currentId = id;
-				this.getItemData(id);
-			},
-			onClickNav(item) {
-				this.currentId = item.id;
-				this.getItemData(this.currentId);
+			...mapMutations(['editCurrentCategory']),
+			onClickNav(item,index) {
+				this.currentId = index;
+				this.getItemData(item.id);
 			},
 			rightItemClick(item){
 				this.$router.navigateTo({
-					url: `../product/product?id=${this.currentId}&tabId=${item.id}`
+					url: `../product/product?id=${item.id}`
 				});
 			},
 			getItemData(id) {
-				productCateList(id).then(res => {
-					if (res.code == 200) {
-						this.rightItemList = res.data;
+				getCurrentCategory(id).then(res => {
+					if (res.errno === 0) {
+						this.editCurrentCategory(res.data);
 					}
 				});
 			}
