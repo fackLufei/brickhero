@@ -66,7 +66,7 @@ XHService.prototype._request = function(config){
 		uni.request({
 			url: this.baseUrl + config.url,
 			method: config.method,
-			data: config.data||{},
+			data: config.data,
 			header: config.header || this.header,
 			dataType: config.dataType || this.dataType,
 			responseType: config.responseType || this.responseType,
@@ -90,7 +90,7 @@ XHService.prototype._request = function(config){
 
 
 export default new XHService({
-	baseUrl:'http://47.115.50.116:8080/api'
+	baseUrl:'https://shop.xinmeitop.com/wx'
 },function(config){//请求拦截
 
 	if(!config.isNoLoading){//开启loading
