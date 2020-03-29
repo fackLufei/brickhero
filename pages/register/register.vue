@@ -6,7 +6,7 @@
 		<van-field :value="authCode" :maxlength="6" center clearable @change="changeCode" placeholder="请输入短信验证码" :border="false"
 		 use-button-slot>
 			<van-button slot="button" :disabled="!/^1\d{10}$/.test(telephone)||codeText != '发送验证码'" color="linear-gradient(to right, #FFA97A, #FF6F42,#FF2B00)"
-			 size="small" @click="getCode" type="primary">{{codeText}}</van-button>
+			 size="small" @tap="getCode" type="primary">{{codeText}}</van-button>
 		</van-field>
 		<!-- 密码 -->
 		<van-field
@@ -27,7 +27,7 @@
 			<!-- 注冊 -->
 			<view class="register-in">
 				<van-button  color="linear-gradient(to right, #FFA97A, #FF6F42,#FF2B00)" type="primary"
-				 @click="register" :disabled="!telephone||!authCode||!password||!passwordSuer"  :loading="loading" block>注册</van-button>
+				 @tap="register" :disabled="!telephone||!authCode||!password||!passwordSuer"  :loading="loading" block>注册</van-button>
 			</view>
 	</view>
 </template>
