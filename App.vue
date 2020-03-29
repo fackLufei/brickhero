@@ -14,8 +14,8 @@
 			console.log('App Show')
 			if(this.classifyList.length===0){
 				//获取首页分类
-				productCateList(0).then(res => {
-					if (res.code == 200) {
+				productCateList().then(res => {
+					if(res.errno === 0){
 						this.setClassifyList(res.data);
 					}
 				})
