@@ -15,7 +15,7 @@
 		<view class="carousel-section">
 			<swiper @change="swiperChange" circular :indicator-dots="false" :autoplay="true" :interval="4000" :duration="500">
 				<swiper-item v-for="item in carouselList" :key="item.id">
-					<van-image class="swiper-item" width="100%" height="100%" :src="item.pic" />
+					<van-image class="swiper-item" width="100%" height="100%" :src="item.url" />
 				</swiper-item>
 
 			</swiper>
@@ -26,9 +26,9 @@
 		</view>
 		<!-- 分类 -->
 		<view class="class-ification">
-			<view class="cate-section" >
+			<view class="cate-section">
 				<view class="cate-item" v-for="_item in classifyList" :key="_item.id" @tap="classify(_item)">
-					<image :src="_item.icon"></image>
+					<image :src="_item.iconUrl"></image>
 					<text>{{_item.name}}</text>
 				</view>
 			</view>
@@ -56,11 +56,21 @@
 		computed: {
 			...mapState(['classifyList'])
 		},
+		onLoad(options) {
+			// 页面初始化 options为页面跳转所带来的参数
+			if (options.productId) {
+				
+					this.$router.navigateTo({
+						url: '../productDetails/productDetails?id=' + options.productId
+					});
+		
+			}
+		},
 		onReady() {
 			//获取轮播数据
 			getHomeContent().then(res => {
-				if (res.code == 200) {
-					this.carouselList = res.data.advertiseList;
+				if (res.data.banner) {
+					this.carouselList = res.data.banner;
 				}
 			})
 		},
@@ -124,7 +134,7 @@
 
 		.cate-section {
 			display: flex;
-			flex-wrap:wrap;
+			flex-wrap: wrap;
 			// margin-bottom: 54upx;
 
 			.cate-item {
