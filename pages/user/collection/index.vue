@@ -28,7 +28,7 @@
               slot="right-icon"
               class="checkbox-icon"
               bind-group
-              v-model="item.id"
+              :value="item._isChecked"
               @change="handlerSelect(item)"
               v-if="isEdit"
               ref="checkboxes"
@@ -53,7 +53,7 @@
       <van-checkbox
         slot="right-icon"
         class="checkbox-All"
-        v-model="isSelectAll"
+        :value="isSelectAll"
         @change="selectAll()"
         ref="checkboxes"
       >全选</van-checkbox>
@@ -132,13 +132,15 @@ export default {
     handlerDelete() {},
     handlerSelect(item) {
       let itemData = this.goodsList.find(val => val.id === item.id);
-      item._isChecked.detail = !item._isChecked.detail;
+      item._isChecked = !item._isChecked;
       console.log(this.selectList, item._isChecked, itemData._isChecked);
     },
     selectChange() {
       console.log(this.selectList);
     },
-    selectAll() {}
+    selectAll() {
+      this.isSelectAll=!this.isSelectAll
+    }
   }
 };
 </script>

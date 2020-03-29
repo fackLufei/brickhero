@@ -72,6 +72,24 @@
 			}
 		},
 		{
+			"path": "pages/user/address/index",
+			"style": {
+				"usingComponents": {
+					"van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
+					"van-checkbox-group": "/wxcomponents/vant-weapp/checkbox-group/index"
+				}
+			}
+		},
+		{
+			"path": "pages/user/address/address",
+			"style": {
+				"usingComponents": {
+					"van-field": "/wxcomponents/vant-weapp/field/index",
+					"van-switch": "/wxcomponents/vant-weapp/switch/index"
+				}
+			}
+		},
+		{
 			"path": "pages/user/user/vipPay",
 			"style": {
 				"usingComponents": {

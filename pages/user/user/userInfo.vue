@@ -57,6 +57,7 @@ export default {
     .user-icon {
       width: 58upx;
       height: 58upx;
+      border-radius: 50%;
       // border: 1px dashed red;
       margin-right: 28upx;
       margin-top: -30upx;

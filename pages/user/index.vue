@@ -148,11 +148,11 @@ export default {
   },
   methods: {
     handlerNavigateToUser(path, settingType) {
-      // if (settingType === "VIP" && !this.user.vip) {
-      //   续费
-      //   this.$router.navigateTo({ url: "./user/vipPay" });
-      //   return;
-      // }
+      if (settingType === "VIP" && !this.user.vip) {
+        // 续费
+        this.$router.navigateTo({ url: "./user/vipPay" });
+        return;
+      }
       // 开通
       this.$router.navigateTo({ url: path });
       
