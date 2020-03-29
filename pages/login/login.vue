@@ -13,8 +13,8 @@
 			 lang="zh_CN" block>微信用户一键登录</van-button>
 		</view>
 		<view class="phone-login">
-			<text @click="phoneLogin">账号密码登录</text>
-			<text @click="register">注册</text>
+			<text @tap="phoneLogin">账号密码登录</text>
+			<text @tap="register">注册</text>
 		</view>
 		<view class="tips">登录即代表您已经同意搬砖侠<text>《服务协议》</text>与<text>《隐私政策》</text></view>
 	</view>
@@ -54,26 +54,12 @@
 				uni.login({
 					provider: 'weixin',
 					success: function(loginRes) {
-						console.log({
-							code: loginRes.code,
-							encryptedData: e.detail.encryptedData,
-							errMsg: e.detail.errMsg,
-							iv: e.detail.iv,
-							rawData: e.detail.rawData,
-							signature: e.detail.signature,
-							userInfo: e.detail.userInfo
-						});
 						// 微信登录
 						wxLogin({
 							code: loginRes.code,
-							encryptedData: e.detail.encryptedData,
-							errMsg: e.detail.errMsg,
-							iv: e.detail.iv,
-							rawData: e.detail.rawData,
-							signature: e.detail.signature,
 							userInfo: e.detail.userInfo
 						}).then(res => {
-							if (res.code === 200) {
+							if (res.errno === 0) {
 								setToken(res.data.token);
 								setUserInfo(res.data.userInfo);
 								if (this.routerWait.routerPath) {
