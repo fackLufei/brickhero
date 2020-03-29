@@ -7,12 +7,12 @@
 		<!-- 登录 -->
 		<view class="login-in">
 			<van-button :disabled="!phone||!password" color="linear-gradient(to right, #FFA97A, #FF6F42,#FF2B00)" type="primary"
-			 @click="phoneLogin" :loading="loading" block>登录</van-button>
+			 @tap="phoneLogin" :loading="loading" block>登录</van-button>
 		</view>
 		<!-- 还没注册 -->
-		<view class="tips" @click="register">还没注册？点击注册</view>
+		<view class="tips" @tap="register">还没注册？点击注册</view>
 		<!-- 微信登录 -->
-		<view class="wx-login" @click="wxLogin">
+		<view class="wx-login" @tap="wxLogin">
 			<image fit="contain" class="wx-logo" src="/static/images/timg.png" />
 			<view class="tips">微信手机号一键登录</view>
 		</view>
@@ -69,7 +69,7 @@
 					username: phone,
 					password
 				}).then(res => {
-					if (res.code == 200) {
+					if (res.errno == 0) {
 						uni.showToast({
 							icon: 'none',
 							title: '登录成功'
