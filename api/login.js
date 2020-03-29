@@ -3,15 +3,16 @@ import http from '@/utils/http.js';
 //微信会员登录
 export function wxLogin(data){
 	return http.post({
-		url:'/sso/login/wx',
+		url:'/auth/login_by_weixin',
 		data
 	});
 }
 //会员登录 POST /api/sso/login
 export function login(data){
 	return http.post({
-		url:`/sso/login?username=${data.username}&password=${data.password}`,
-		isNoLoading:true
+		url:'/auth/login',
+		isNoLoading:true,
+		data
 	});
 }
 //获取验证码
