@@ -151,6 +151,7 @@ export default {
     .vip-img {
       height: 58upx;
       width: 58upx;
+      border-radius: 50%;
       // border: 1px dashed red;
       margin-left: 60upx;
       margin-top: 30upx;

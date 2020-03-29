@@ -19,7 +19,6 @@
       scroll-y
     >
       <view v-if="goodsList.length">
-        <van-checkbox-group v-model="selectList">
           <view
             class="order-item"
             v-for="(item,index) in goodsList"
@@ -29,7 +28,7 @@
               slot="right-icon"
               class="checkbox-icon"
               bind-group
-              v-model="item.id"
+              :value="item._isChecked"
               @change="handlerSelect(item)"
               v-if="isEdit"
               ref="checkboxes"
@@ -37,29 +36,28 @@
             <goods
               :goodsItem="item"
               :isEdit="isEdit"
-              v-if="item.state === '无货'"
+              v-if="item.state === '已下架'"
             ></goods>
             <no-goods
               :goodsItem="item"
               :isEdit="isEdit"
-              v-if="item.state!== '无货'"
+              v-if="item.state!== '已下架'"
             ></no-goods>
           </view>
-        </van-checkbox-group>
       </view>
     </scroll-view>
     <view
-      class="collection-footer"
+      class="record-footer"
       v-if="isEdit"
     >
       <van-checkbox
         slot="right-icon"
         class="checkbox-All"
-        v-model="isSelectAll"
+        :value="isSelectAll"
         @change="selectAll()"
         ref="checkboxes"
       >全选</van-checkbox>
-      <button style="background:url(/static/images/order_btn.png);background-size:100%">取消收藏</button>
+      <button style="background:url(/static/images/order_btn.png);background-size: 105%;background-position-x: 20%;">取消收藏</button>
     </view>
   </view>
 </template>
@@ -75,11 +73,12 @@ export default {
   data() {
     return {
       isEdit: false,
+      isSelectAll: false,
       selectList: [1, 2],
       goodsList: [
         {
           id: 1,
-          state: "无货",
+          state: "已下架",
           _isChecked: true,
           image:
             "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
@@ -107,6 +106,12 @@ export default {
           _isChecked: false,
           image:
             "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
+        },
+        {
+          id: 6,
+          _isChecked: false,
+          image:
+            "http://img3.imgtn.bdimg.com/it/u=999277307,2658085126&fm=11&gp=0.jpg"
         }
       ]
     };
@@ -127,13 +132,15 @@ export default {
     handlerDelete() {},
     handlerSelect(item) {
       let itemData = this.goodsList.find(val => val.id === item.id);
-      item._isChecked.detail = !item._isChecked.detail;
+      item._isChecked = !item._isChecked;
       console.log(this.selectList, item._isChecked, itemData._isChecked);
     },
     selectChange() {
       console.log(this.selectList);
     },
-    selectAll() {}
+    selectAll() {
+      this.isSelectAll=!this.isSelectAll
+    }
   }
 };
 </script>
@@ -147,6 +154,8 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  // position: relative;
+  overflow: hidden;
   .record-header {
     display: flex;
     justify-content: space-between;
@@ -172,7 +181,9 @@ export default {
   }
   .record-scroll-content {
     flex: 1;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0;
     &.edit {
       margin-bottom: 165upx;
     }
@@ -185,7 +196,7 @@ export default {
       margin-left: 32upx;
     }
   }
-  .collection-footer {
+  .record-footer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -194,7 +205,7 @@ export default {
     height: 98upx;
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px -4upx 7upx 0px rgba(0, 0, 0, 0.03);
-    padding: 10upx 30upx 67upx;
+    padding: 10upx 30upx 68upx;
     display: flex;
     justify-content: space-between;
     align-items: center;
