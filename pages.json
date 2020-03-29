@@ -15,7 +15,13 @@
 		{
 			"path": "pages/cart/cart",
 			"style": {
-				"navigationBarTitleText": "购物车"
+				"navigationBarTitleText": "购物车",
+				"usingComponents": {
+					"van-swipe-cell": "/wxcomponents/vant-weapp/swipe-cell/index",
+					 "van-checkbox": "/wxcomponents/vant-weapp/checkbox/index",
+					 "van-image": "/wxcomponents/vant-weapp/image/index",
+					 "van-stepper": "/wxcomponents/vant-weapp/stepper/index"
+				}
 			}
 		},
 		{
@@ -127,8 +133,13 @@
 				}
 			}
 		}
-
-	],
+	    ,{
+            "path" : "pages/productDetails/productDetails",
+            "style" : {
+				"navigationBarTitleText": "商品详情"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "搬砖侠",
