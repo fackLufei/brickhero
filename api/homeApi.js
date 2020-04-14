@@ -48,6 +48,18 @@ export function getProductDetail(id){
 		url:`/goods/detail?id=${id}`
 	});
 }
+//获取品牌详情
+export function getBrandDetail(id){
+	return http.get({
+		url:`/brand/detail?id=${id}`
+	});
+}
+//通过品牌查商品
+export function getBrandProduct(id){ 
+	return http.get({
+		url:`/goods/list?brandId=${id}&page=1&limit=10`
+	});
+}
 //获取关联商品
 export function getRelated(id){
 	return http.get({
