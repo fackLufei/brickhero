@@ -157,6 +157,12 @@
 				"navigationBarTitleText": "商品详情"
 			}
         }
+        ,{
+            "path" : "pages/brandDetails/brandDetails",
+            "style" : {
+				"navigationBarTitleText": "品牌详情"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
